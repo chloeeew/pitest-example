@@ -31,12 +31,14 @@ class RangeValidatorTest {
         assertThat(cut.isValid(200)).isFalse();
     }
 
+    //    skip this test to demo CONDITIONALS_BOUNDARY mutants
     @Test
     @DisplayName("Should return True given 100")
     void oneHundred_isValid_returnsTrue() {
         assertThat(cut.isValid(100)).isTrue();
     }
 
+    //    skip this test to demo CONDITIONALS_BOUNDARY mutants
     @Test
     @DisplayName("Should return false given 0")
     void zero_isValid_returnsFalse() {
@@ -44,28 +46,36 @@ class RangeValidatorTest {
     }
 
 
-
     /**
-     * {@link RangeValidator#typeOfTriangle(int, int, int)}
+     * {@link RangeValidator#classifyScore(int)} (int, int, int)}
      */
 
     @Test
-    @DisplayName("Should return scalene given 3,4,5")
+    @DisplayName("Invalid case in classifyScore")
     void scalene_valid(){
-        assertThat(cut.typeOfTriangle(3,4,5)).isEqualTo("Scalene");
+        assertThat(cut.classifyScore(-5)).isEqualTo("Invalid");
+        assertThat(cut.classifyScore(110)).isEqualTo("Invalid");
     }
 
     @Test
-    @DisplayName("Should return Equilateral given 1,1,1")
+    @DisplayName("Valid case in classifyScore")
     void equilateral_valid(){
-        assertThat(cut.typeOfTriangle(1,1,1)).isEqualTo("Equilateral");
+        assertThat(cut.classifyScore(90)).isEqualTo("A");
+        assertThat(cut.classifyScore(80)).isEqualTo("B");
+        assertThat(cut.classifyScore(70)).isEqualTo("C");
+        assertThat(cut.classifyScore(60)).isEqualTo("D");
+        assertThat(cut.classifyScore(50)).isEqualTo("F");
     }
 
+    //    skip this test to demo CONDITIONALS_BOUNDARY mutants
     @Test
-    @DisplayName("Should return Isosceles given 3,3,4")
-    void isosceles_valid(){
-        assertThat(cut.typeOfTriangle(3,3,4)).isEqualTo("Isosceles");
+    @DisplayName("Valid boundary case in classifyScore")
+    void equilateral_valid_boundary(){
+        assertThat(cut.classifyScore(100)).isEqualTo("A");
+        assertThat(cut.classifyScore(89)).isEqualTo("B");
+        assertThat(cut.classifyScore(79)).isEqualTo("C");
+        assertThat(cut.classifyScore(69)).isEqualTo("D");
+        assertThat(cut.classifyScore(0)).isEqualTo("F");
     }
-
 
 }

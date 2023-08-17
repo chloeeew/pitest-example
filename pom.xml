@@ -85,9 +85,9 @@
                     <targetTests>
                         <param>com.chloe.pitest.*</param>
                     </targetTests>
-                    <mutators>
-                        <mutator>NEGATE_CONDITIONALS</mutator>
-                    </mutators>
+<!--                    <mutators>-->
+<!--                        <mutator>NEGATE_CONDITIONALS</mutator>-->
+<!--                    </mutators>-->
                 </configuration>
             </plugin>
         </plugins>
